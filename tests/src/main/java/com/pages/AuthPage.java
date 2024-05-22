@@ -11,7 +11,6 @@ import java.time.Duration;
 
 public class AuthPage {
     private WebDriver driver;
-
     @FindBy(xpath = "//*[@name='email']")
     WebElement emailElement;
 
