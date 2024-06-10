@@ -6,13 +6,14 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 public class WebDriverFactory {
     public static WebDriver getDriver(String browserType) {
+        if (browserType == null || browserType.isEmpty()) return null;
         switch (browserType.toLowerCase()) {
             case "chrome":
                 return new ChromeDriver();
             case "edge":
                 return new EdgeDriver();
             default:
-                throw new IllegalArgumentException("Browser \"" + browserType + "\" not supported.");
+                return null;
         }
     }
 }

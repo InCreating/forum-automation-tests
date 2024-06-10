@@ -1,7 +1,6 @@
 package com.pages;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class AuthPage {
-    private WebDriver driver;
+    private final WebDriver driver;
     @FindBy(xpath = "//*[@name='email']")
     WebElement emailElement;
 
@@ -20,14 +19,23 @@ public class AuthPage {
     @FindBy(xpath = "//*[@name='username']")
     WebElement userElement;
 
-    @FindBy(xpath = "/html/body/app-root/app-login-signup-page/div/div/div/div/div/div[1]/div/div/div")
+    @FindBy(xpath = "//*[@id='signup-toggle-btn']")
     WebElement switchTypeElement;
 
-    @FindBy(xpath = "/html/body/app-root/app-login-signup-page/div/div/div/div/div/div[2]/div/form/div[2]/div/input")
+    @FindBy(xpath = "//input[@type='submit' and @value='Sign up']")
     WebElement signUpElement;
 
-    @FindBy(xpath = "/html/body/app-root/app-login-signup-page/div/div/div/div/div/div[1]/div/form/div[2]/div/input")
+    @FindBy(xpath = "//input[@type='submit' and @value='Log In']")
     WebElement logInElement;
+
+    @FindBy(xpath = "//*[@name='confirm-password']")
+    WebElement confirmPassElement;
+
+    @FindBy(xpath = "//*[@id='signup-email']")
+    WebElement signUpEmailElement;
+
+    @FindBy(xpath = "//*[@id='signup-password']")
+    WebElement signUpPassElement;
 
     public AuthPage(WebDriver driver) {
         this.driver = driver;
@@ -46,16 +54,37 @@ public class AuthPage {
         userElement.sendKeys(username);
     }
 
-    public void clickSwitchToSignUp() {
-        switchTypeElement.click();
+    public void setConfirmPassElement (String confPass) {
+        confirmPassElement.sendKeys(confPass);
     }
 
     public void clickFinishSignUp() {
         signUpElement.click();
     }
 
+    public void clickSwitchToSignUp() {
+        switchTypeElement.click();
+    }
+
+    public void setPasswordSignUp(String mess) {
+        signUpPassElement.sendKeys(mess);
+    }
+
+    public void setEmailSignUp(String mess) {
+        signUpEmailElement.sendKeys(mess);
+    }
+
     public void clickFinishLogIn() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(logInElement)).click();
+    }
+
+    public String getCurrentLing() {
+        return driver.getCurrentUrl();
+    }
+
+    public void waitForUrlChange(String expectedUrl) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.urlToBe(expectedUrl));
     }
 }

@@ -9,7 +9,7 @@ public class SignUpTest extends BaseTest{
     }
 
     @Test
-    public void signUpEdge() {
+    public void signUpEdge()  {
         runSignUpTest();
     }
 }
