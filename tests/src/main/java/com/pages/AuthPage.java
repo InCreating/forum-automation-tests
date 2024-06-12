@@ -10,6 +10,7 @@ import java.time.Duration;
 
 public class AuthPage {
     private final WebDriver driver;
+    private final WebDriverWait wait;
     @FindBy(xpath = "//*[@name='email']")
     WebElement emailElement;
 
@@ -37,8 +38,12 @@ public class AuthPage {
     @FindBy(xpath = "//*[@id='signup-password']")
     WebElement signUpPassElement;
 
+    @FindBy(className = "toast-body")
+    WebElement toastElement;
+
     public AuthPage(WebDriver driver) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }
 
@@ -75,16 +80,19 @@ public class AuthPage {
     }
 
     public void clickFinishLogIn() {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(logInElement)).click();
     }
 
-    public String getCurrentLing() {
+    public String getCurrentLink() {
         return driver.getCurrentUrl();
     }
 
     public void waitForUrlChange(String expectedUrl) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.urlToBe(expectedUrl));
+    }
+
+    public String assertTextExistence() {
+        wait.until(ExpectedConditions.visibilityOf(toastElement));
+        return toastElement.getText();
     }
 }

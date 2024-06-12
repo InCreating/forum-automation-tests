@@ -6,7 +6,7 @@ import org.assertj.core.api.WithAssertions;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
-public class BaseTest implements WithAssertions {
+public class BaseTestLogin implements WithAssertions {
     protected static WebDriver driver;
     public AuthPage loginPage;
     public AuthPage signUpPage;
@@ -15,6 +15,7 @@ public class BaseTest implements WithAssertions {
     public static final String USERNAME = "tanja";
     public static final String MAIN_URL = "https://speakup.lol/login";
     public static final String HOME_URL = "https://speakup.lol/home";
+    public static final String FAIL_MESSAGE_SIGN = "Signup Failed!";
 
     @Parameters({"browser"})
     @BeforeClass
@@ -51,7 +52,7 @@ public class BaseTest implements WithAssertions {
 
         loginPage.waitForUrlChange(HOME_URL);
 
-        assertThat(loginPage.getCurrentLing()).isEqualTo(HOME_URL);
+        assertThat(loginPage.getCurrentLink()).isEqualTo(HOME_URL);
     }
 
     public void runSignUpTest(){
@@ -61,5 +62,9 @@ public class BaseTest implements WithAssertions {
         signUpPage.setPasswordSignUp(PASSWORD);
         signUpPage.setConfirmPassElement(PASSWORD);
         signUpPage.clickFinishSignUp();
+        signUpPage.assertTextExistence();
+
+        assertThat(signUpPage.assertTextExistence())
+                .isEqualTo(FAIL_MESSAGE_SIGN);
     }
 }

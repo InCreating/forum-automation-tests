@@ -3,7 +3,7 @@ package LoginPage;
 import org.assertj.core.api.WithAssertions;
 import org.testng.annotations.Test;
 
-public class LogInTest extends BaseTest implements WithAssertions {
+public class LogInTest extends BaseTestLogin implements WithAssertions {
     @Test
     public void loginChrome() {
         runLoginTest();
