@@ -1,0 +1,22 @@
+<suite name="Authorization page tests" verbose="1">
+    <test name="Chrome Sign Up Test">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="LoginPage.SignUpTest">
+                <methods>
+                    <include name="signUpChrome"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Edge Sign Up Test">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="LoginPage.SignUpTest">
+                <methods>
+                    <include name="signUpEdge"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
