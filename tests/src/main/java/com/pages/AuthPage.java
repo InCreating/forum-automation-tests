@@ -95,4 +95,8 @@ public class AuthPage {
         wait.until(ExpectedConditions.visibilityOf(toastElement));
         return toastElement.getText();
     }
+
+    public void pageRedirect(String URL) {
+        driver.get(URL);
+    }
 }

@@ -4,7 +4,7 @@
         <classes>
             <class name="LoginPage.SignUpTest">
                 <methods>
-                    <include name="signUpChrome"/>
+                    <include name="signUp"/>
                 </methods>
             </class>
         </classes>
@@ -14,7 +14,7 @@
         <classes>
             <class name="LoginPage.SignUpTest">
                 <methods>
-                    <include name="signUpEdge"/>
+                    <include name="signUp"/>
                 </methods>
             </class>
         </classes>

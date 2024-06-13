@@ -1,20 +1,20 @@
-<suite name="Authorization page tests" verbose="1">
-    <test name="Chrome Login Test">
+<suite name="Creating New Topic" verbose="1">
+    <test name="Chrome version">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="LoginPage.LogInTest">
+            <class name="TopicPostPage.TopicTest">
                 <methods>
-                    <include name="login"/>
+                    <include name="createTopic"/>
                 </methods>
             </class>
         </classes>
     </test>
-    <test name="Edge Login Test">
+    <test name="Edge version">
         <parameter name="browser" value="edge"/>
         <classes>
-            <class name="LoginPage.LogInTest">
+            <class name="TopicPostPage.TopicTest">
                 <methods>
-                    <include name="login"/>
+                    <include name=""/>
                 </methods>
             </class>
         </classes>
