@@ -1,9 +1,8 @@
 package HomePage;
 
-import org.assertj.core.api.WithAssertions;
 import org.testng.annotations.Test;
 
-public class LinksRedirectionTest extends BaseTestHome implements WithAssertions {
+public class LinksRedirectionTest extends BaseTestHome {
     @Test
     public void redirectLinks() {
         runLoginTest();

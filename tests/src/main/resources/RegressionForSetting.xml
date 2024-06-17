@@ -1,0 +1,22 @@
+<suite name="Setting verify" verbose="1">
+    <test name="Chrome version">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="SettingPage.SettingTest">
+                <methods>
+                    <include name="setting"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Edge version">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="SettingPage.SettingTest">
+                <methods>
+                    <include name="setting"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -10,7 +10,7 @@ public class BaseTestLogin implements WithAssertions {
     protected static WebDriver driver;
     public AuthPage loginPage;
     public AuthPage signUpPage;
-    public static final String EMAIL ="johndoe@gmail.com";
+    public static final String EMAIL ="johndo@gmail.com";
     public static final String PASSWORD = "12345";
     public static final String USERNAME = "tanja";
     public static final String MAIN_URL = "https://speakup.lol/login";
